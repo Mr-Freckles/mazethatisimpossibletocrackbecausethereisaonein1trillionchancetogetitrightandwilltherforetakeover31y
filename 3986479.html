@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maze</title>
+</head>
+<body>
+    <ul id="links-list"></ul>
+
+    <script>
+        // Array of possible links
+        var links = [
+            "4792794.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+            "1727557.html",
+        ];
+
+        // Shuffle function to randomize the order of links
+        function shuffle(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to generate and display the random links
+        function generateRandomLinks() {
+            // Shuffle the links array
+            var shuffledLinks = shuffle(links);
+
+            // Select the UL element to append the links
+            var linksList = document.getElementById('links-list');
+
+            // Clear any existing links
+            linksList.innerHTML = '';
+
+            // Iterate through the shuffled links and create list items with anchor tags
+            shuffledLinks.forEach(function(link) {
+                var li = document.createElement('li');
+                var a = document.createElement('a');
+                a.href = link;
+                a.textContent = "Link";
+                li.appendChild(a);
+                linksList.appendChild(li);
+            });
+        }
+
+        // Call the function to generate random links when the page loads
+        generateRandomLinks();
+    </script>
+</body>
+</html>
